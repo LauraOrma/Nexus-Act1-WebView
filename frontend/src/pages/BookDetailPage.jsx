@@ -1,5 +1,6 @@
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from 'react';
+import librosData from '../data/libros.json';
 import Header from '../components/Header';
 import BookCard from "../components/BookCard.jsx";
 import Footer from "../components/Footer.jsx";
@@ -7,22 +8,16 @@ import BreadCrumbs from "../components/BreadCrumbs.jsx";
 
 function BookDetailPage() {
     const {id} = useParams();
-    const [libro, setLibro] = useState(null);
-    const [libros, setLibros] = useState([]);
-    const recomendados = libros.filter(l => l.id != Number(id)).slice(0, 2);
 
-    useEffect(() => {
-        fetch(`http://localhost:3000/libros/${id}`)
-            .then(res => res.json())
-            .then(data => setLibro(data));
-    }, [id]);
+    const libros = librosData;
 
-    useEffect(() => {
-        fetch('http://localhost:3000/libros')
-            .then(res => res.json())
-            .then(data => setLibros(data));
-    }, []);
+    const libro = libros.find(l => l.id === Number(id));
 
+    const recomendados = libros
+        .filter(l => l.id !== Number(id))
+        .slice(0, 2);
+
+    if (!libro) return <p>Libro no encontrado</p>;
     if (!libro) return <p>Cargando...</p>;
 
     return (<>
@@ -31,9 +26,9 @@ function BookDetailPage() {
         <main className="book-page">
             <BreadCrumbs
                 items={[
-                    { label: "Inicio", to: "/" },
-                    { label: "Catálogo", to: "/catalogo" },
-                    { label: libro.titulo, active: true }
+                    {label: "Inicio", to: "/"},
+                    {label: "Catálogo", to: "/catalogo"},
+                    {label: libro.titulo, active: true}
                 ]}
             />
             {/* Detalle */}

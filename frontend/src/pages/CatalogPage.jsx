@@ -1,16 +1,21 @@
 import {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
+import librosData from '../data/libros.json';
 import Header from '../components/Header';
 import BookCard from '../components/BookCard';
 import Footer from "../components/Footer.jsx";
+import Breadcrumbs from "../components/BreadCrumbs.jsx";
 
 function CatalogPage() {
     const [libros, setLibros] = useState([]);
 
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/libros')
+    //         .then(res => res.json())
+    //         .then(data => setLibros(data));
+    // }, []);
+
     useEffect(() => {
-        fetch('http://localhost:3000/libros')
-            .then(res => res.json())
-            .then(data => setLibros(data));
+        setLibros(librosData);
     }, []);
 
     return (
@@ -22,16 +27,12 @@ function CatalogPage() {
                 <section className="container__catalog">
 
                     {/* Breadcrumbs */}
-                    <ul className="container breadcrumbs">
-                        <li className="breadcrumbs__item">
-                            <Link to="/">
-                                <span>Inicio</span>
-                            </Link>
-                        </li>
-                        <li className="breadcrumbs__item breadcrumbs__item--active">
-                            <span>Catálogo</span>
-                        </li>
-                    </ul>
+                    <Breadcrumbs
+                        items={[
+                            { label: "Inicio", to: "/" },
+                            { label: "Catálogo", active: true }
+                        ]}
+                    />
 
                     <div className="container">
 
@@ -41,7 +42,6 @@ function CatalogPage() {
                             </div>
                         </div>
 
-                        {/* LISTA DINÁMICA */}
                         <div className="catalog__books">
                             {libros.map(libro => (
                                 <BookCard key={libro.id} libro={libro}/>

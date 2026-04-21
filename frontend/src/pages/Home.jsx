@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import librosData from '../data/libros.json';
 import Header from '../components/Header';
 import BookCard from '../components/BookCard';
 import Footer from "../components/Footer.jsx";
@@ -6,10 +7,14 @@ import Footer from "../components/Footer.jsx";
 function Home() {
     const [libros, setLibros] = useState([]);
 
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/libros')
+    //         .then(res => res.json())
+    //         .then(data => setLibros(data));
+    // }, []);
+
     useEffect(() => {
-        fetch('http://localhost:3000/libros')
-            .then(res => res.json())
-            .then(data => setLibros(data));
+        setLibros(librosData);
     }, []);
 
     return (

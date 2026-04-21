@@ -4,7 +4,11 @@
 
 /* Botón hamburguesa - oculto en desktop */
 header {
-  background: black;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding-block: 2rem;
+  color: #fff;
 }
 
 .menu-nav {
