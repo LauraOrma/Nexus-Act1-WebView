@@ -1,0 +1,27 @@
+.breadcrumbs {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.breadcrumbs__item {
+  padding: 0.25rem 0.75rem;
+  background: #fafafa;
+  text-align: center;
+  list-style: none;
+  border: 1px solid #b3b5cd;
+  margin-bottom: 0.25rem;
+}
+
+.breadcrumbs__item--active {
+  background: #037bc0;
+
+  a {
+    color: white;
+  }
+}
