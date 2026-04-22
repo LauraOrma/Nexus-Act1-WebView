@@ -40,5 +40,19 @@
     "autor": "Bram Stoker",
     "precio": 21.75,
     "imagen": "/img/book-7.jpg"
+  },
+  {
+    "id": 7,
+    "titulo": "La mujer de arriba",
+    "autor": "Freida McFadden",
+    "precio": 8.95,
+    "imagen": "/img/book-8.jpg"
+  },
+  {
+    "id": 8,
+    "titulo": "El último secreto",
+    "autor": "Dan Brown",
+    "precio": 30.99,
+    "imagen": "/img/book-5.jpg"
   }
 ]

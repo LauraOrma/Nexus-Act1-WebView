@@ -20,6 +20,20 @@ const libros = [
         imagen: "/img/book-3.jpg"
     },
     {
+        id: 3,
+        titulo: "Orgullo y prejuicio",
+        autor: "Jane Austen",
+        precio: 24.99,
+        imagen: "/img/book-1.jpg"
+    },
+    {
+        id: 4,
+        titulo: "La casa de los espíritus",
+        autor: "Isabel Allende",
+        precio: 24.99,
+        imagen: "/img/book-4.jpg"
+    },
+    {
         id: 5,
         titulo: "1984",
         autor: "George Orwell",
@@ -45,15 +59,14 @@ const libros = [
         titulo: "El último secreto",
         autor: "Dan Brown",
         precio: 30.99,
-        imagen: "/img/book-5.jpg"
+        imagen: "/img/book-9.jpg"
     }
 ];
-// Lista de libros
+
 app.get('/libros', (req, res) => {
     res.json(libros);
 });
 
-// Libro individual
 app.get('/libros/:id', (req, res) => {
     const libro = libros.find(l => l.id == req.params.id);
     res.json(libro);
@@ -61,5 +74,5 @@ app.get('/libros/:id', (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor en http://localhost:${PORT}`);
+    console.log(`Server http://localhost:${PORT}`);
 });
