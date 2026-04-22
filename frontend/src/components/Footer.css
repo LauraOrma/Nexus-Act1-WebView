@@ -37,3 +37,10 @@ footer {
 .copyright {
   padding-block: 1rem;
 }
+
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import BookCard from "../components/BookCard.jsx";
 import Footer from "../components/Footer.jsx";
 import BreadCrumbs from "../components/BreadCrumbs.jsx";
+import "./BookDetailPage.css";
 
 function BookDetailPage() {
     const {id} = useParams();
@@ -15,7 +16,7 @@ function BookDetailPage() {
 
     const recomendados = libros
         .filter(l => l.id !== Number(id))
-        .slice(0, 2);
+        .slice(0, 4);
 
     if (!libro) return <p>Libro no encontrado</p>;
     if (!libro) return <p>Cargando...</p>;
@@ -32,7 +33,7 @@ function BookDetailPage() {
                 ]}
             />
             {/* Detalle */}
-            <section className="container" aria-label="Información sobre el libro">
+            <section className="container detailsBookPage" aria-label="Información sobre el libro">
                 <div className="detailBook__layout">
 
                     <div className="detailBook__media">
@@ -76,7 +77,7 @@ function BookDetailPage() {
                         <div className="detailBook__technical">
                             <div className="detailBook__grp">
                                 <div className="technical__item detailBook__rating">
-                                    <p>Reseñas: <span>5 ⭐</span></p>
+                                    <p>Reseñas: <span>5.0</span></p>
                                 </div>
                                 <div className="technical__item detailBook__pages">
                                     <p>Número de páginas: <span>350</span></p>
@@ -89,7 +90,7 @@ function BookDetailPage() {
 
                         <h2>Sinopsis</h2>
                         <p className="detailBook__synopsis">
-                            Este es un libro increíble lleno de historia y emoción...
+                            {libro.descripcion_larga}
                         </p>
                     </div>
 

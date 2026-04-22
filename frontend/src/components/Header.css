@@ -3,16 +3,36 @@
 /* ==================== */
 
 /* Botón hamburguesa - oculto en desktop */
+.header-wrapper {
+  background: black;
+  width: 100%;
+}
+
 header {
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
   padding-block: 2rem;
   color: #fff;
 }
 
 .menu-nav {
   padding: 0;
+}
+
+.menu-nav {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .menu-toggle {
@@ -81,15 +101,6 @@ header {
   .menu-nav a {
     font-size: 0.9rem;
   }
-
-  .footer-container {
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  .footer-column {
-    flex: 1 1 45%;
-  }
 }
 
 /* Tablets pequeñas y móviles grandes */
@@ -139,25 +150,6 @@ header {
 
   header {
     position: relative;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero {
-    height: auto;
-    min-height: auto;
-  }
-
-  .hero-tagline {
-    padding: 4rem 1rem;
-    text-align: center;
-  }
-
-  .hero-tagline h1 {
-    font-size: 1.5rem;
   }
 }
 
