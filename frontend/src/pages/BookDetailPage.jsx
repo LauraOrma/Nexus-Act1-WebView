@@ -9,18 +9,33 @@ import "./BookDetailPage.css";
 
 function BookDetailPage() {
     const {id} = useParams();
+    const [libro, setLibro] = useState(null);
+    const [libros, setLibros] = useState([]);
 
-    const libros = librosData;
+    useEffect(() => {
+        fetch(`https://nexus-act1-webview.onrender.com/libros/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log("LIBRO:", data);
+                setLibro(data);
+            });
+    }, [id]);
 
-    const libro = libros.find(l => l.id === Number(id));
+    useEffect(() => {
+        fetch('https://nexus-act1-webview.onrender.com/libros')
+            .then(res => res.json())
+            .then(data => {
+                console.log("LIBROS:", data);
+                setLibros(data);
+            });
+    }, []);
 
     const recomendados = libros
         .filter(l => l.id !== Number(id))
         .slice(0, 4);
 
-    if (!libro) return <p>Libro no encontrado</p>;
-    if (!libro) return <p>Cargando...</p>;
-
+    if (!libro) return <span>Cargando información</span>;
+    console.log(libro);
     return (<>
         <Header/>
 
@@ -39,7 +54,7 @@ function BookDetailPage() {
                     <div className="detailBook__media">
                         <img
                             className="detailBook__image"
-                            src={libro.imagen}
+                            src={`https://nexus-act1-web-view.vercel.app${libro.imagen}`}
                             alt={libro.titulo}
                         />
                     </div>

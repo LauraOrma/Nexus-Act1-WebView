@@ -9,14 +9,10 @@ import "./CatalogPage.css"
 function CatalogPage() {
     const [libros, setLibros] = useState([]);
 
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/libros')
-    //         .then(res => res.json())
-    //         .then(data => setLibros(data));
-    // }, []);
-
     useEffect(() => {
-        setLibros(librosData);
+        fetch('https://nexus-act1-webview.onrender.com/libros')
+            .then(res => res.json())
+            .then(data => setLibros(data));
     }, []);
 
     return (
